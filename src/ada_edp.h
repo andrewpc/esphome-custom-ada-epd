@@ -23,9 +23,7 @@ class ADAEDPComponent : public PollingComponent{
 
   //void set_string(char* str);
   float get_setup_priority() const override { return setup_priority::LATE; }
- 
-
-
+ //andrew
 
 };
 
