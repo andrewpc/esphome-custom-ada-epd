@@ -60,14 +60,16 @@ static const char *const TAG = "ada_epd";
 
       displayEPD.printf("%.1f", float(this->temperature_sensor_->state));
       
-      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+      displayEPD.setFont(&AvenirNextLTPro_Regular14pt7b);
       displayEPD.setTextSize(1);
+      displayEPD.setcursor(getCursorX(), getCursorY()-16);
       displayEPD.print("o");
-      displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
-      displayEPD.setTextSize(1);
+      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
       displayEPD.print("C");
 
+      //displayEPD.setcursor(getCursorX(), getCursorY()+16);
 
+      displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
       displayEPD.setTextSize(1);
       displayEPD.setCursor(2,110);
       displayEPD.printf("%.1f%%", float(this->humidity_sensor_->state));
