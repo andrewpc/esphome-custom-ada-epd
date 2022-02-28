@@ -70,7 +70,7 @@ static const char *const TAG = "ada_epd";
     }
     else{
       displayEPD.setTextSize(4);
-      displayEPD.printf("Waiting for connection...")
+      displayEPD.printf("Waiting for connection...");
     }
 
 
