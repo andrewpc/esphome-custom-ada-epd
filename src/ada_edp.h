@@ -15,7 +15,7 @@ namespace ada_edp {
 class ADAEDPComponent : public PollingComponent{
 
  public:
-  ADAEDPComponent(sensor::Sensor *temperature, sensor::Sensor *humidity, sensor::Sensor *pressure) : PollingComponent(120000){ 
+  ADAEDPComponent(sensor::Sensor *temperature, sensor::Sensor *humidity, sensor::Sensor *pressure) : PollingComponent(180000){ 
     this->temperature_sensor_ = temperature;
     this->humidity_sensor_ = humidity;
     this->pressure_sensor_ = pressure;
