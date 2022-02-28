@@ -40,41 +40,38 @@ static const char *const TAG = "ada_epd";
     time::ESPTime esptime = esptime.from_epoch_local(result);
     
     Serial.println("Update Called");
+
     
-    displayEPD.setRotation(0);
+    displayEPD.setCursor(5,5);
+    displayEPD.setTextColor(EPD_BLACK);
     displayEPD.clearBuffer();
-    
-     displayEPD.setTextSize(2);
-     displayEPD.setCursor(5,5);
-     displayEPD.setTextColor(EPD_BLACK);
-    // displayEPD.print(std::ctime(&result)); 
 
-    // displayEPD.setTextSize(2);
-    // displayEPD.setTextColor(EPD_RED);
-    // displayEPD.setCursor(5, 100);
-    // displayEPD.printf ("Loops: ");
-    // displayEPD.print(counter);
-    //displayEPD.printf("Time: %02i:%02i", esptime.hour, esptime.minute);
+    if (esptime.year > 1970) {
 
-    displayEPD.setCursor(5,40);
-
-    displayEPD.printf("Date: %02i/%02i", esptime.day_of_month, esptime.month);
-
-    displayEPD.setCursor(5,75);
-
-    displayEPD.printf("Temperature: %.2fC", float(this->temperature_sensor_->state));
-
-    displayEPD.setCursor(5,110);
-
-    displayEPD.printf("Humidity: %.2f%%", float(this->humidity_sensor_->state));
-
-    displayEPD.setCursor(5,140);
-
-    displayEPD.printf("Loops: %i", counter);
+      displayEPD.setTextSize(6);
+      displayEPD.setRotation(0);
+      displayEPD.clearBuffer();
+      
+      displayEPD.setTextSize(6);
+      displayEPD.setCursor(5,5);
+      displayEPD.setTextColor(EPD_BLACK);
 
 
+      displayEPD.printf("%.2f°C", float(this->temperature_sensor_->state));
 
+      displayEPD.setTextSize(3);
+      displayEPD.setCursor(5,80);
+      displayEPD.printf("Humidity: %.2f%%", float(this->humidity_sensor_->state));
 
+      displayEPD.setCursor(5,170);
+
+      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime.day_of_month, esptime.month, esptime.year, esptime.hour, esptime.minute);
+
+    }
+    else{
+      displayEPD.setTextSize(4);
+      displayEPD.printf("Waiting for connection...")
+    }
 
 
 
