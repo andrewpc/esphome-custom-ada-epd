@@ -34,10 +34,10 @@ static const char *const TAG = "ada_epd";
 
   void ADAEDPComponent::update(){
     
-    //std::time_t result = std::time(nullptr);
-    //time::ESPTime esptime;
-    //esptime.from_epoch_local(result);
-    //uint8_t month = esptime.day_of_month;
+    std::time_t result = std::time(nullptr);
+    time::ESPTime esptime;
+    esptime.from_epoch_local(result);
+    uint8_t month = esptime.day_of_month;
     
     
     Serial.println("Update Called");
@@ -59,7 +59,7 @@ static const char *const TAG = "ada_epd";
 
     displayEPD.setCursor(5,40);
 
-    //displayEPD.printf("Date: %02i/%02i", esptime.day_of_month, esptime.month);
+    displayEPD.printf("Date: %02i/%02i", esptime.day_of_month, esptime.month);
 
     displayEPD.setCursor(5,75);
 
