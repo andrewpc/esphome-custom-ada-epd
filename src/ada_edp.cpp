@@ -63,11 +63,11 @@ static const char *const TAG = "ada_epd";
 
     displayEPD.setCursor(5,75);
 
-    displayEPD.printf("Temperature: %.2fC", float(this->temperature_sensor_));
+    displayEPD.printf("Temperature: %.2fC", float(this->temperature_sensor_->state));
 
     displayEPD.setCursor(5,110);
 
-    displayEPD.printf("Humidity: %.2f%%", float(this->humidity_sensor_));
+    displayEPD.printf("Humidity: %.2f%%", float(this->humidity_sensor_->state));
 
     displayEPD.setCursor(5,140);
 
