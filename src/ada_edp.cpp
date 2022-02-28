@@ -1,4 +1,5 @@
 #include "ada_edp.h"
+#include <ctime>
 #include "esphome/components/time/real_time_clock.h"
 
 namespace esphome {
@@ -36,10 +37,7 @@ static const char *const TAG = "ada_epd";
   void ADAEDPComponent::update(){
     
     std::time_t result = std::time(nullptr);
-    time::ESPTime esptime;
-    esptime.from_epoch_local(result);
-    uint8_t month = esptime.day_of_month;
-    
+    time::ESPTime esptime = esptime.from_epoch_local(result);
     
     Serial.println("Update Called");
     
