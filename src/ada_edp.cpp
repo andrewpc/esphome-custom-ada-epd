@@ -1,5 +1,7 @@
 #include "ada_edp.h"
 #include "AvenirNextLTPro_Regular32pt7b.h"
+#include "AvenirNextLTPro_Regular16pt7b.h"
+#include "AvenirNextLTPro_Regular14pt7b.h"
 #include <ctime>
 #include "esphome/components/time/real_time_clock.h"
 
@@ -52,15 +54,22 @@ static const char *const TAG = "ada_epd";
 
       displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,60);
+      displayEPD.setCursor(2,50);
       displayEPD.setTextColor(EPD_BLACK);
 
 
       displayEPD.printf("%.1f", float(this->temperature_sensor_->state));
-      displayEPD.print(char(247));
+      
+      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+      displayEPD.setTextSize(1);
+      displayEPD.print("o");
+      displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
+      displayEPD.setTextSize(1);
+      displayEPD.print("C");
+
 
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,120);
+      displayEPD.setCursor(2,110);
       displayEPD.printf("%.1f%%", float(this->humidity_sensor_->state));
       
       displayEPD.setTextSize(1);
