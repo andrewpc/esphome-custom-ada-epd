@@ -52,7 +52,7 @@ static const char *const TAG = "ada_epd";
 
       displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,30);
+      displayEPD.setCursor(2,60);
       displayEPD.setTextColor(EPD_BLACK);
 
 
@@ -60,11 +60,11 @@ static const char *const TAG = "ada_epd";
       displayEPD.print(char(247));
 
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,110);
+      displayEPD.setCursor(2,120);
       displayEPD.printf("%.1f%%", float(this->humidity_sensor_->state));
       
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,160);
+      displayEPD.setCursor(2,190);
       displayEPD.setFont();
       displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime.day_of_month, esptime.month, esptime.year, esptime.hour, esptime.minute);
 
