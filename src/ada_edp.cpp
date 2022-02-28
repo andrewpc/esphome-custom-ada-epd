@@ -1,4 +1,5 @@
 #include "ada_edp.h"
+#include "AvenirNextLTPro_Regular32pt7b.h"
 #include <ctime>
 #include "esphome/components/time/real_time_clock.h"
 
@@ -44,6 +45,7 @@ static const char *const TAG = "ada_epd";
     
     displayEPD.setCursor(5,5);
     displayEPD.setTextColor(EPD_BLACK);
+    displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
     displayEPD.clearBuffer();
 
     if (esptime.year > 1970) {
