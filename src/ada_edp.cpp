@@ -54,7 +54,8 @@ static const char *const TAG = "ada_epd";
       displayEPD.setTextColor(EPD_BLACK);
 
 
-      displayEPD.printf("%.1f°C", float(this->temperature_sensor_->state));
+      displayEPD.printf("%.1f", float(this->temperature_sensor_->state));
+      displayEPD.print(char(247));
 
       displayEPD.setTextSize(2);
       displayEPD.setCursor(5,80);
