@@ -62,7 +62,7 @@ static const char *const TAG = "ada_epd";
       
       displayEPD.setFont(&AvenirNextLTPro_Regular14pt7b);
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(getCursorX(), getCursorY()-16);
+      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-16);
       displayEPD.print("o");
       displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
       displayEPD.print("C");
