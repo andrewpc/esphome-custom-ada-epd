@@ -91,8 +91,8 @@ static const char *const TAG = "ada_epd";
 
     }
 
-    //displayEPD.display(false);
-    displayEPD.displayPartial(0,0,100,100);
+    displayEPD.display(false);
+  
  
     counter++;
   };
