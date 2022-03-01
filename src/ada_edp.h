@@ -13,7 +13,7 @@
 namespace esphome {
 namespace ada_edp {
 
-class ADAEDPComponent : public PollingComponent{
+class ADAEDPComponent : public PollingComponent, public sensor::Sensor{
 
  public:
   ADAEDPComponent(sensor::Sensor *temperature, sensor::Sensor *humidity, sensor::Sensor *pressure, binary_sensor::BinarySensor *hastatus) : PollingComponent(180000){ 
