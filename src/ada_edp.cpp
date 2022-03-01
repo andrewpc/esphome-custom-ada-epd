@@ -30,7 +30,7 @@ static const char *const TAG = "ada_epd";
   };
 
   void ADAEDPComponent::dump_config(){
-    Serial.println("dump");      
+    Serial.println("dump_config");      
   };
 
 
@@ -41,8 +41,6 @@ static const char *const TAG = "ada_epd";
     
     std::time_t result = std::time(nullptr);
     time::ESPTime esptime = esptime.from_epoch_local(result);
-    
-    Serial.println("Update Called");
 
     
     displayEPD.setCursor(5,5);
@@ -72,7 +70,7 @@ static const char *const TAG = "ada_epd";
     displayEPD.setTextSize(1);
     displayEPD.setCursor(2,110);
     displayEPD.printf("%.1f", float(this->humidity_sensor_->state));
-    displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-22);
+    displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-24);
     displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
     displayEPD.print("%");
     
@@ -82,7 +80,7 @@ static const char *const TAG = "ada_epd";
 
     displayEPD.setFont();
     displayEPD.setTextSize(2);
-    displayEPD.setCursor(2,175);
+    displayEPD.setCursor(2,163);
     displayEPD.printf("HA: %s", ha_status_binary_sensor_->state ? "Connected" : "Local");
     
     if (ha_status_binary_sensor_->state) {
