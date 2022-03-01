@@ -72,7 +72,7 @@ static const char *const TAG = "ada_epd";
     displayEPD.printf("%.1f", float(this->humidity_sensor_->state));
     displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-24);
     displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
-    displayEPD.print("%");
+    displayEPD.print("%RH");
     
     displayEPD.setCursor(2,150);
     displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
@@ -80,13 +80,13 @@ static const char *const TAG = "ada_epd";
 
     displayEPD.setFont();
     displayEPD.setTextSize(2);
-    displayEPD.setCursor(2,163);
+    displayEPD.setCursor(4,163);
     displayEPD.printf("HA: %s", ha_status_binary_sensor_->state ? "Connected" : "Local");
     
     if (ha_status_binary_sensor_->state) {
 
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,195);
+      displayEPD.setCursor(4,195);
       displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime.day_of_month, esptime.month, esptime.year, esptime.hour, esptime.minute);
 
     }
