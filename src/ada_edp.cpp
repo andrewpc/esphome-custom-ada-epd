@@ -74,6 +74,11 @@ static const char *const TAG = "ada_epd";
       displayEPD.setCursor(2,110);
       displayEPD.printf("%.1f%%", float(this->humidity_sensor_->state));
       
+      displayEPD.setCursor(2,140);
+      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+      displayEPD.printf("%fhPa", float(this->pressure_sensor_->state));
+
+
       displayEPD.setTextSize(1);
       displayEPD.setCursor(2,190);
       displayEPD.setFont();
