@@ -62,9 +62,10 @@ static const char *const TAG = "ada_epd";
       
       displayEPD.setFont(&AvenirNextLTPro_Regular14pt7b);
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-32);
+      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-34);
       displayEPD.print("o");
       displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()+12);
       displayEPD.print("C");
 
       //displayEPD.setCursor(getCursorX(), getCursorY()+16);
@@ -72,14 +73,14 @@ static const char *const TAG = "ada_epd";
       displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
       displayEPD.setTextSize(1);
       displayEPD.setCursor(2,110);
-      displayEPD.printf("%.1f%", float(this->humidity_sensor_->state));
-      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-32);
+      displayEPD.printf("%.1f", float(this->humidity_sensor_->state));
+      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-22);
       displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
       displayEPD.print("%");
       
       displayEPD.setCursor(2,150);
       displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
-      displayEPD.printf("%.0fhPa", float(this->pressure_sensor_->state));
+      displayEPD.printf("%.0f hPa", float(this->pressure_sensor_->state));
 
 
       displayEPD.setTextSize(1);
