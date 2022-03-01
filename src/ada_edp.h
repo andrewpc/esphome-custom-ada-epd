@@ -6,6 +6,7 @@
 #include "esphome/core/hal.h"
 #include "esphome/core/log.h"
 #include "esphome/components/sensor/sensor.h"
+#include "esphome/components/binary_sensor/binary_sensor.h"
 
 
 
@@ -15,10 +16,11 @@ namespace ada_edp {
 class ADAEDPComponent : public PollingComponent{
 
  public:
-  ADAEDPComponent(sensor::Sensor *temperature, sensor::Sensor *humidity, sensor::Sensor *pressure) : PollingComponent(180000){ 
+  ADAEDPComponent(sensor::Sensor *temperature, sensor::Sensor *humidity, sensor::Sensor *pressure, binary_sensor::BinarySensor *hastatus) : PollingComponent(180000){ 
     this->temperature_sensor_ = temperature;
     this->humidity_sensor_ = humidity;
     this->pressure_sensor_ = pressure;
+    this->ha_status_binary_sensor_ = hastatus;
   }
   
   void setup() override;
@@ -33,7 +35,7 @@ class ADAEDPComponent : public PollingComponent{
   sensor::Sensor *temperature_sensor_;
   sensor::Sensor *humidity_sensor_;
   sensor::Sensor *pressure_sensor_;
-
+  binary_sensor::BinarySensor *ha_status_binary_sensor_
 };
 
 }  // namespace ada_edp

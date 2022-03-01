@@ -51,55 +51,50 @@ static const char *const TAG = "ada_epd";
     
     displayEPD.clearBuffer();
 
-    if (esptime.year > 1970) {
+    displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
+    displayEPD.setTextSize(1);
+    displayEPD.setCursor(2,50);
+    displayEPD.setTextColor(EPD_BLACK);
 
-      displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
+
+    displayEPD.printf("%.1f", float(this->temperature_sensor_->state));
+    
+    displayEPD.setFont(&AvenirNextLTPro_Regular14pt7b);
+    displayEPD.setTextSize(1);
+    displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-34);
+    displayEPD.print("o");
+    displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+    displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()+10);
+    displayEPD.print("C");
+
+
+    displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
+    displayEPD.setTextSize(1);
+    displayEPD.setCursor(2,110);
+    displayEPD.printf("%.1f", float(this->humidity_sensor_->state));
+    displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-22);
+    displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+    displayEPD.print("%");
+    
+    displayEPD.setCursor(2,150);
+    displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
+    displayEPD.printf("%.0f hPa", float(this->pressure_sensor_->state));
+
+    displayEPD.setFont();
+    displayEPD.setTextSize(2);
+    displayEPD.setCursor(2,175);
+    displayEPD.printf("HA: %s", ha_status_binary_sensor_->state ? "Connected" : "Local");
+    
+    if (ha_status_binary_sensor_->state) {
+
       displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,50);
-      displayEPD.setTextColor(EPD_BLACK);
-
-
-      displayEPD.printf("%.1f", float(this->temperature_sensor_->state));
-      
-      displayEPD.setFont(&AvenirNextLTPro_Regular14pt7b);
-      displayEPD.setTextSize(1);
-      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-34);
-      displayEPD.print("o");
-      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
-      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()+12);
-      displayEPD.print("C");
-
-      //displayEPD.setCursor(getCursorX(), getCursorY()+16);
-
-      displayEPD.setFont(&AvenirNextLTPro_Regular32pt7b);
-      displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,110);
-      displayEPD.printf("%.1f", float(this->humidity_sensor_->state));
-      displayEPD.setCursor(displayEPD.getCursorX(), displayEPD.getCursorY()-22);
-      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
-      displayEPD.print("%");
-      
-      displayEPD.setCursor(2,150);
-      displayEPD.setFont(&AvenirNextLTPro_Regular16pt7b);
-      displayEPD.printf("%.0f hPa", float(this->pressure_sensor_->state));
-
-
-      displayEPD.setTextSize(1);
-      displayEPD.setCursor(2,190);
-      displayEPD.setFont();
+      displayEPD.setCursor(2,195);
       displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime.day_of_month, esptime.month, esptime.year, esptime.hour, esptime.minute);
 
     }
-    else{
-      displayEPD.setTextSize(3);
-      displayEPD.printf("Waiting for connection...");
-    }
-
-
 
     displayEPD.display(false);
  
-
     counter++;
   };
 
