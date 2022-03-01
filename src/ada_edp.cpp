@@ -47,6 +47,7 @@ static const char *const TAG = "ada_epd";
     
     displayEPD.setCursor(5,5);
     displayEPD.setTextColor(EPD_BLACK);
+    displayEPD.setRotation(3);
     
     displayEPD.clearBuffer();
 
