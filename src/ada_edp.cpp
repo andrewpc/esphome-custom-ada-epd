@@ -36,13 +36,40 @@ static const char *const TAG = "ada_epd";
 
   
   uint16_t counter = 0;
+  float lastTemp = 0;
+  int lastHumidity = 0;
+  int lastPressure = 0;
+  bool screenUpdate = false;
 
   void ADAEDPComponent::update(){
     
+    Serial.println("Last Temp: %f", this->lastTemp); 
+    Serial.println("Current Temp: %f", (float)this->temperature_sensor_->state); 
+    Serial.println("Last Humidity: %i", this->lastHumidity); 
+    Serial.println("Current Humidity: %i", (int)this->humidity_sensor_->state); 
+    Serial.println("Last Pressure: %i", this->lastPressure); 
+    Serial.println("Current Pressure: %i", (int)this->pressure_sensor_->state); 
+
+    if (this->lastTemp != (float)this->temperature_sensor_->state || 
+      this->lastHumidity != (int)this->humidity_sensor_->state ||
+      this->lastPressure != (int)this->pressure_sensor_->state )
+    {
+      Serial.println("*********************"); 
+      Serial.println("At least one sensor value has changed - screen update needed"); 
+      Serial.println("*********************"); 
+      
+      this->screenUpdate = true;
+      
+      this->lastTemp = (float)this->temperature_sensor_->state;
+      this->lastHumidity != (int)this->humidity_sensor_->state;
+      this->lastPressure != (int)this->pressure_sensor_->state'
+    }
+
+
     std::time_t result = std::time(nullptr);
     time::ESPTime esptime = esptime.from_epoch_local(result);
 
-    
+
     displayEPD.setCursor(5,5);
     displayEPD.setTextColor(EPD_BLACK);
     displayEPD.setRotation(2);
@@ -81,7 +108,7 @@ static const char *const TAG = "ada_epd";
     displayEPD.setFont();
     displayEPD.setTextSize(2);
     displayEPD.setCursor(6,163);
-    displayEPD.printf("HA: %s", ha_status_binary_sensor_->state ? "Connected" : "Local");
+    displayEPD.printf("%s", ha_status_binary_sensor_->state ? "HA Connected" : "Local Only");
     
     if (ha_status_binary_sensor_->state) {
 
@@ -91,7 +118,9 @@ static const char *const TAG = "ada_epd";
 
     }
 
-    displayEPD.display(false);
+    if (this->screenUpdate){ 
+      displayEPD.display(false);
+    }
   
  
     counter++;
