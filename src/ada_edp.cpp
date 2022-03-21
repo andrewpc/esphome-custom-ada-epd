@@ -61,8 +61,8 @@ static const char *const TAG = "ada_epd";
       screenUpdate = true;
       
       lastTemp = float(this->temperature_sensor_->state);
-      lastHumidity != int(this->humidity_sensor_->state);
-      lastPressure != int(this->pressure_sensor_->state);
+      lastHumidity = int(this->humidity_sensor_->state);
+      lastPressure = int(this->pressure_sensor_->state);
     }
 
 
@@ -110,7 +110,7 @@ static const char *const TAG = "ada_epd";
     displayEPD.setCursor(6,163);
     displayEPD.printf("%s", ha_status_binary_sensor_->state ? "HA Connected" : "Local Only");
     
-    if (this->ha_status_binary_sensor_->state && this->esptime_ != NULL) {
+    if (this->ha_status_binary_sensor_->state && this->esptime_ != nullptr) {
 
       displayEPD.setTextSize(1);
       displayEPD.setCursor(6,185);
