@@ -26,6 +26,7 @@ class ADAEDPComponent : public PollingComponent, public sensor::Sensor{
   void setup() override;
   void update() override;
   void dump_config() override;
+  void set_time(ESPTime esptime){this->esptime_ = esptime};
 
 
   //void set_string(char* str);
@@ -36,6 +37,7 @@ class ADAEDPComponent : public PollingComponent, public sensor::Sensor{
   sensor::Sensor *humidity_sensor_;
   sensor::Sensor *pressure_sensor_;
   binary_sensor::BinarySensor *ha_status_binary_sensor_;
+  time::ESPTime esptime_;
 };
 
 }  // namespace ada_edp
