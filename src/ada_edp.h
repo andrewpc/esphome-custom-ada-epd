@@ -27,7 +27,7 @@ class ADAEDPComponent : public PollingComponent, public sensor::Sensor{
   void setup() override;
   void update() override;
   void dump_config() override;
-  void set_time(time::ESPTime esptime){this->esptime_ = esptime;}
+  void set_time(time::ESPTime esptime){this->esptime_ = esptime->ESPTime;}
 
 
   //void set_string(char* str);
