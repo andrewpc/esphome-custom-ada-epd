@@ -114,7 +114,7 @@ static const char *const TAG = "ada_epd";
 
       displayEPD.setTextSize(1);
       displayEPD.setCursor(6,185);
-      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime_.now().day_of_month, esptime_.now().month, esptime_.now().year, esptime_.now().hour, esptime_.now().minute);
+      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime_->now().day_of_month, esptime_->now().month, esptime_->now().year, esptime_->now().hour, esptime_->now().minute);
 
     }
 
