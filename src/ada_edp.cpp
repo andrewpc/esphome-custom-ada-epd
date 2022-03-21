@@ -3,7 +3,7 @@
 #include "AvenirNextLTPro_Regular16pt7b.h"
 #include "AvenirNextLTPro_Regular14pt7b.h"
 #include <ctime>
-#include "esphome/components/time/real_time_clock.h"
+
 
 namespace esphome {
 namespace ada_edp {
@@ -44,15 +44,15 @@ static const char *const TAG = "ada_epd";
   void ADAEDPComponent::update(){
     
     Serial.println("Last Temp: %f", this->lastTemp); 
-    Serial.println("Current Temp: %f", (float)this->temperature_sensor_->state); 
+    Serial.println("Current Temp: %f", float(this->temperature_sensor_->state)); 
     Serial.println("Last Humidity: %i", this->lastHumidity); 
-    Serial.println("Current Humidity: %i", (int)this->humidity_sensor_->state); 
+    Serial.println("Current Humidity: %i", int(this->humidity_sensor_->state)); 
     Serial.println("Last Pressure: %i", this->lastPressure); 
-    Serial.println("Current Pressure: %i", (int)this->pressure_sensor_->state); 
+    Serial.println("Current Pressure: %i", int(this->pressure_sensor_->state)); 
 
-    if (this->lastTemp != (float)this->temperature_sensor_->state || 
-      this->lastHumidity != (int)this->humidity_sensor_->state ||
-      this->lastPressure != (int)this->pressure_sensor_->state )
+    if (this->lastTemp != float(this->temperature_sensor_->state) || 
+      this->lastHumidity != int(this->humidity_sensor_->state) ||
+      this->lastPressure != int(this->pressure_sensor_->state) )
     {
       Serial.println("*********************"); 
       Serial.println("At least one sensor value has changed - screen update needed"); 
@@ -60,9 +60,9 @@ static const char *const TAG = "ada_epd";
       
       this->screenUpdate = true;
       
-      this->lastTemp = (float)this->temperature_sensor_->state;
-      this->lastHumidity != (int)this->humidity_sensor_->state;
-      this->lastPressure != (int)this->pressure_sensor_->state;
+      this->lastTemp = float(this->temperature_sensor_->state);
+      this->lastHumidity != int(this->humidity_sensor_->state);
+      this->lastPressure != int(this->pressure_sensor_->state);
     }
 
 
