@@ -7,7 +7,7 @@
 #include "esphome/core/log.h"
 #include "esphome/components/sensor/sensor.h"
 #include "esphome/components/binary_sensor/binary_sensor.h"
-#include "esphome/components/homeassistant/homeassistant_time.h"
+#include "esphome/components/homeassistant/time/homeassistant_time.h"
 
 
 
