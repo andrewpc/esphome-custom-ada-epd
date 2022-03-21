@@ -110,7 +110,7 @@ static const char *const TAG = "ada_epd";
     displayEPD.setCursor(6,163);
     displayEPD.printf("%s", ha_status_binary_sensor_->state ? "HA Connected" : "Local Only");
     
-    if (this->ha_status_binary_sensor_->state && this->esptime_ != nullptr) {
+    if (this->ha_status_binary_sensor_->state) {
 
       displayEPD.setTextSize(1);
       displayEPD.setCursor(6,185);
