@@ -43,12 +43,12 @@ static const char *const TAG = "ada_epd";
 
   void ADAEDPComponent::update(){
     
-    Serial.println("Last Temp: %f", this->lastTemp); 
-    Serial.println("Current Temp: %f", float(this->temperature_sensor_->state)); 
-    Serial.println("Last Humidity: %i", this->lastHumidity); 
-    Serial.println("Current Humidity: %i", int(this->humidity_sensor_->state)); 
-    Serial.println("Last Pressure: %i", this->lastPressure); 
-    Serial.println("Current Pressure: %i", int(this->pressure_sensor_->state)); 
+    Serial.printf("Last Temp: %f", this->lastTemp); 
+    Serial.printf("Current Temp: %f", float(this->temperature_sensor_->state)); 
+    Serial.printf("Last Humidity: %i", this->lastHumidity); 
+    Serial.printf("Current Humidity: %i", int(this->humidity_sensor_->state)); 
+    Serial.printf("Last Pressure: %i", this->lastPressure); 
+    Serial.printf("Current Pressure: %i", int(this->pressure_sensor_->state)); 
 
     if (this->lastTemp != float(this->temperature_sensor_->state) || 
       this->lastHumidity != int(this->humidity_sensor_->state) ||
