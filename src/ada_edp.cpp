@@ -67,7 +67,7 @@ static const char *const TAG = "ada_epd";
 
 
     //std::time_t result = std::time(nullptr);
-    //time::ESPTime esptime = esptime.from_epoch_local(result);
+   
 
 
     displayEPD.setCursor(5,5);
@@ -114,7 +114,7 @@ static const char *const TAG = "ada_epd";
 
       displayEPD.setTextSize(1);
       displayEPD.setCursor(6,185);
-      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime_.day_of_month, esptime_.month, esptime_.year, esptime_.hour, esptime_.minute);
+      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime_.now().day_of_month, esptime_.now().month, esptime_.now().year, esptime_.now().hour, esptime_.now().minute);
 
     }
 
