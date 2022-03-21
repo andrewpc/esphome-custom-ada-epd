@@ -43,26 +43,26 @@ static const char *const TAG = "ada_epd";
 
   void ADAEDPComponent::update(){
     
-    Serial.printf("Last Temp: %f", this->lastTemp); 
+    Serial.printf("Last Temp: %f", lastTemp); 
     Serial.printf("Current Temp: %f", float(this->temperature_sensor_->state)); 
-    Serial.printf("Last Humidity: %i", this->lastHumidity); 
+    Serial.printf("Last Humidity: %i", lastHumidity); 
     Serial.printf("Current Humidity: %i", int(this->humidity_sensor_->state)); 
-    Serial.printf("Last Pressure: %i", this->lastPressure); 
+    Serial.printf("Last Pressure: %i", lastPressure); 
     Serial.printf("Current Pressure: %i", int(this->pressure_sensor_->state)); 
 
-    if (this->lastTemp != float(this->temperature_sensor_->state) || 
-      this->lastHumidity != int(this->humidity_sensor_->state) ||
-      this->lastPressure != int(this->pressure_sensor_->state) )
+    if (lastTemp != float(this->temperature_sensor_->state) || 
+      lastHumidity != int(this->humidity_sensor_->state) ||
+      lastPressure != int(this->pressure_sensor_->state) )
     {
       Serial.println("*********************"); 
       Serial.println("At least one sensor value has changed - screen update needed"); 
       Serial.println("*********************"); 
       
-      this->screenUpdate = true;
+      screenUpdate = true;
       
-      this->lastTemp = float(this->temperature_sensor_->state);
-      this->lastHumidity != int(this->humidity_sensor_->state);
-      this->lastPressure != int(this->pressure_sensor_->state);
+      lastTemp = float(this->temperature_sensor_->state);
+      lastHumidity != int(this->humidity_sensor_->state);
+      lastPressure != int(this->pressure_sensor_->state);
     }
 
 
@@ -118,11 +118,11 @@ static const char *const TAG = "ada_epd";
 
     }
 
-    if (this->screenUpdate){ 
+    if (screenUpdate){ 
       displayEPD.display(false);
     }
   
-    this->screenUpdate = false;
+    screenUpdate = false;
     counter++;
   };
 
