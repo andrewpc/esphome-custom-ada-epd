@@ -62,12 +62,12 @@ static const char *const TAG = "ada_epd";
       
       this->lastTemp = (float)this->temperature_sensor_->state;
       this->lastHumidity != (int)this->humidity_sensor_->state;
-      this->lastPressure != (int)this->pressure_sensor_->state'
+      this->lastPressure != (int)this->pressure_sensor_->state;
     }
 
 
-    std::time_t result = std::time(nullptr);
-    time::ESPTime esptime = esptime.from_epoch_local(result);
+    //std::time_t result = std::time(nullptr);
+    //time::ESPTime esptime = esptime.from_epoch_local(result);
 
 
     displayEPD.setCursor(5,5);
@@ -110,11 +110,11 @@ static const char *const TAG = "ada_epd";
     displayEPD.setCursor(6,163);
     displayEPD.printf("%s", ha_status_binary_sensor_->state ? "HA Connected" : "Local Only");
     
-    if (ha_status_binary_sensor_->state) {
+    if (this->ha_status_binary_sensor_->state && this->esptime_ != NULL) {
 
       displayEPD.setTextSize(1);
       displayEPD.setCursor(6,185);
-      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime.day_of_month, esptime.month, esptime.year, esptime.hour, esptime.minute);
+      displayEPD.printf("Last Updated: %02i/%02i/%02i %02i:%02i", esptime_.day_of_month, esptime_.month, esptime_.year, esptime_.hour, esptime_.minute);
 
     }
 
@@ -122,7 +122,7 @@ static const char *const TAG = "ada_epd";
       displayEPD.display(false);
     }
   
- 
+    this->screenUpdate = false;
     counter++;
   };
 
